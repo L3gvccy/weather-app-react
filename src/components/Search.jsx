@@ -5,12 +5,12 @@ export default function Search() {
         <input
           type="text"
           className="form-control me-2 rounded-pill"
-          placeholder="Search for a city..."
+          placeholder="Пошук міста..."
           aria-label="Search"
           data-bs-theme="dark"
         />
         <button className="btn btn-outline-success rounded-pill" type="submit">
-          Search
+          Знайти
         </button>
       </form>
     </div>

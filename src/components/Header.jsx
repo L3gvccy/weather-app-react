@@ -1,6 +1,6 @@
 import Location from "./Location";
 import Search from "./Search";
-import Settings from "./settings";
+import Settings from "./Settings";
 
 export default function Header() {
   return (
