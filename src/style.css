@@ -7,3 +7,23 @@
 .bg-main {
   background-color: #1d1d1d !important;
 }
+
+.scroll-dark-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #666 #1e1e1e; /* thumb, track */
+}
+
+.scroll-dark-thin::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-dark-thin::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 4px;
+}
+
+.scroll-dark-thin::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 4px;
+  border: 1px solid #333;
+}

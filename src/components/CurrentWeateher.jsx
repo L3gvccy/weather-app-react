@@ -8,8 +8,8 @@ export default function CurrentWeather() {
   const otherData = getOtherWeatherData();
 
   return (
-    <>
-      <h2 className="text-center mb-3">Поточна погода</h2>
+    <div className="container mb-3">
+      <h3 className="text-center mb-3">Поточна погода</h3>
       <div className="row align-items-stretch">
         <div className="col-4 d-flex">
           <div className="border border-secondary border-2 rounded p-2 w-100 d-flex flex-column justify-content-center align-items-center">
@@ -21,8 +21,10 @@ export default function CurrentWeather() {
               />
             </div>
             <div>
-              <h2 className="text-center">{temperature} °C</h2>
-              <h5 className="text-center">Відчувається як: {feels_like} °C</h5>
+              <h2 className="text-center">{Math.round(temperature)} °C</h2>
+              <h5 className="text-center">
+                Відчувається як: {Math.round(feels_like)} °C
+              </h5>
               <p className="mb-0 text-center text-secondary">{summary}</p>
             </div>
           </div>
@@ -47,6 +49,6 @@ export default function CurrentWeather() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,4 +1,6 @@
 import currentWeather from "./current-weather.json";
+import dailyForecast from "./daily-forecast.json";
+import hourlyForecast from "./hourly-forecast.json";
 
 function getCurrentWeather() {
   return currentWeather.current;
@@ -52,4 +54,17 @@ function getOtherWeatherData() {
   ];
 }
 
-export { getCurrentWeather, getOtherWeatherData };
+function getDailyForecast() {
+  return dailyForecast.daily.data;
+}
+
+function getHourlyForecast() {
+  return hourlyForecast.hourly.data.slice(0, 24);
+}
+
+export {
+  getCurrentWeather,
+  getOtherWeatherData,
+  getDailyForecast,
+  getHourlyForecast,
+};
