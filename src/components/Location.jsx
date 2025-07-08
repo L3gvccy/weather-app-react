@@ -2,7 +2,7 @@ import { useContext } from "react";
 import WeatherContext from "../context/weather.context";
 
 export default function Location() {
-  const place = useContext(WeatherContext);
+  const { place } = useContext(WeatherContext);
 
   return (
     <div className="location">

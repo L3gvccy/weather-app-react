@@ -1,70 +1,24 @@
-import currentWeather from "./current-weather.json";
-import dailyForecast from "./daily-forecast.json";
-import hourlyForecast from "./hourly-forecast.json";
+import axios from "axios";
 
-function getCurrentWeather() {
-  return currentWeather.current;
+export async function getWeatherData(endpoint, place_id, measurementSystem) {
+  const options = {
+    method: "GET",
+    url: `https://ai-weather-by-meteosource.p.rapidapi.com/${endpoint}`,
+    params: {
+      place_id: `${place_id}`,
+      language: "en",
+      units: "auto",
+    },
+    headers: {
+      "x-rapidapi-key": "74e0d52589mshb9c62fd0bc2ec4cp175a53jsn84083e109d8a",
+      "x-rapidapi-host": "ai-weather-by-meteosource.p.rapidapi.com",
+    },
+  };
+
+  try {
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }
-
-function getOtherWeatherData() {
-  const curr = currentWeather.current;
-  return [
-    {
-      id: 0,
-      icon: "droplet",
-      name: "Опади",
-      value: Math.round(curr.precipitation.total),
-      unit: "мм/год",
-    },
-    {
-      id: 1,
-      icon: "wind",
-      name: "Швидкість вітру",
-      value: Math.round(curr.wind.speed),
-      unit: "км/год",
-    },
-    {
-      id: 2,
-      icon: "moisture",
-      name: "Вологість",
-      value: curr.humidity,
-      unit: "%",
-    },
-    {
-      id: 3,
-      icon: "sunglasses",
-      name: "Індекс UV",
-      value: Math.round(curr.uv_index),
-      unit: "",
-    },
-    {
-      id: 4,
-      icon: "clouds-fill",
-      name: "Хмарність",
-      value: curr.cloud_cover,
-      unit: "%",
-    },
-    {
-      id: 5,
-      icon: "eye",
-      name: "Видимість",
-      value: Math.round(curr.visibility),
-      unit: "км",
-    },
-  ];
-}
-
-function getDailyForecast() {
-  return dailyForecast.daily.data;
-}
-
-function getHourlyForecast() {
-  return hourlyForecast.hourly.data.slice(0, 24);
-}
-
-export {
-  getCurrentWeather,
-  getOtherWeatherData,
-  getDailyForecast,
-  getHourlyForecast,
-};

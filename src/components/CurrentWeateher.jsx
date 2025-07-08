@@ -1,11 +1,50 @@
-import { getCurrentWeather, getOtherWeatherData } from "../api";
-
-export default function CurrentWeather() {
-  const data = getCurrentWeather();
-
+export default function CurrentWeather({ data }) {
   const { feels_like, icon_num, summary, temperature } = data;
 
-  const otherData = getOtherWeatherData();
+  const otherData = [
+    {
+      id: 0,
+      icon: "droplet",
+      name: "Опади",
+      value: Math.round(data.precipitation.total),
+      unit: "мм/год",
+    },
+    {
+      id: 1,
+      icon: "wind",
+      name: "Швидкість вітру",
+      value: Math.round(data.wind.speed),
+      unit: "км/год",
+    },
+    {
+      id: 2,
+      icon: "moisture",
+      name: "Вологість",
+      value: data.humidity,
+      unit: "%",
+    },
+    {
+      id: 3,
+      icon: "sunglasses",
+      name: "Індекс UV",
+      value: Math.round(data.uv_index),
+      unit: "",
+    },
+    {
+      id: 4,
+      icon: "clouds-fill",
+      name: "Хмарність",
+      value: data.cloud_cover,
+      unit: "%",
+    },
+    {
+      id: 5,
+      icon: "eye",
+      name: "Видимість",
+      value: Math.round(data.visibility),
+      unit: "км",
+    },
+  ];
 
   return (
     <div className="container mb-3">

@@ -1,14 +1,12 @@
 import CurrentWeather from "./CurrentWeateher";
 import Forecast from "./Forecast";
 import Loader from "./Loader";
-import { getHourlyForecast, getDailyForecast } from "../api";
 import { useContext } from "react";
 import WeatherContext from "../context/weather.context";
 
 export default function Main() {
-  const hourlyData = getHourlyForecast();
-  const dailyData = getDailyForecast();
-  const loading = useContext(WeatherContext);
+  const { loading, currentWeather, hourlyForecast, dailyForecast } =
+    useContext(WeatherContext);
 
   return (
     <div className="bg-main">
@@ -17,11 +15,11 @@ export default function Main() {
           <Loader />
         ) : (
           <>
-            <CurrentWeather />
-            <Forecast type="hourly" data={hourlyData}>
+            <CurrentWeather data={currentWeather} />
+            <Forecast type="hourly" data={hourlyForecast}>
               Погодинний прогноз
             </Forecast>
-            <Forecast type="daily" data={dailyData}>
+            <Forecast type="daily" data={dailyForecast}>
               Прогноз на 21 день
             </Forecast>
           </>
