@@ -19,7 +19,7 @@ function WeatherProvider({ children }) {
       setCurrentWeather(currW.current);
 
       const hourlyF = await getWeatherData("hourly", place.place_id, "auto");
-      setHourlyForecast(hourlyF.hourly.data);
+      setHourlyForecast(hourlyF.hourly.data.slice(0, 24));
 
       const dailyF = await getWeatherData("daily", place.place_id, "auto");
       setDailyForecast(dailyF.daily.data);
