@@ -1,5 +1,10 @@
+import { useContext } from "react";
+import WeatherContext from "../context/weather.context";
+
 export default function CurrentWeather({ data }) {
   const { feels_like, icon_num, summary, temperature } = data;
+
+  const { units } = useContext(WeatherContext);
 
   const otherData = [
     {
@@ -7,42 +12,42 @@ export default function CurrentWeather({ data }) {
       icon: "droplet",
       name: "Опади",
       value: Math.round(data.precipitation.total),
-      unit: "мм/год",
+      unit: units.precipitation,
     },
     {
       id: 1,
       icon: "wind",
       name: "Швидкість вітру",
       value: Math.round(data.wind.speed),
-      unit: "км/год",
+      unit: units.wind_speed,
     },
     {
       id: 2,
       icon: "moisture",
       name: "Вологість",
       value: data.humidity,
-      unit: "%",
+      unit: units.humidity,
     },
     {
       id: 3,
       icon: "sunglasses",
       name: "Індекс UV",
       value: Math.round(data.uv_index),
-      unit: "",
+      unit: units.uv_index,
     },
     {
       id: 4,
       icon: "clouds-fill",
       name: "Хмарність",
       value: data.cloud_cover,
-      unit: "%",
+      unit: units.cloud_cover,
     },
     {
       id: 5,
       icon: "eye",
       name: "Видимість",
       value: Math.round(data.visibility),
-      unit: "км",
+      unit: units.visibility,
     },
   ];
 
@@ -60,9 +65,11 @@ export default function CurrentWeather({ data }) {
               />
             </div>
             <div>
-              <h2 className="text-center">{Math.round(temperature)} °C</h2>
+              <h2 className="text-center">
+                {Math.round(temperature)} {units.temperature}
+              </h2>
               <h5 className="text-center">
-                Відчувається як: {Math.round(feels_like)} °C
+                Відчувається як: {Math.round(feels_like)} {units.temperature}
               </h5>
               <p className="mb-0 text-center text-secondary">{summary}</p>
             </div>

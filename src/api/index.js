@@ -7,7 +7,7 @@ export async function getWeatherData(endpoint, place_id, measurementSystem) {
     params: {
       place_id: `${place_id}`,
       language: "en",
-      units: "auto",
+      units: measurementSystem,
     },
     headers: {
       "x-rapidapi-key": "74e0d52589mshb9c62fd0bc2ec4cp175a53jsn84083e109d8a",

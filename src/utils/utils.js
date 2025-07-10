@@ -17,3 +17,42 @@ export const MEASUREMENT_SYSTEMS = {
   US: "us",
   CA: "ca",
 };
+
+export const UNITS = {
+  metric: {
+    temperature: "°C",
+    precipitation: "мм/год",
+    wind_speed: "м/с",
+    visibility: "км",
+    humidity: "%",
+    uv_index: "",
+    cloud_cover: "%",
+  },
+  us: {
+    temperature: "°F",
+    precipitation: "дюйм/год",
+    wind_speed: "миль/год",
+    visibility: "миль",
+    humidity: "%",
+    uv_index: "",
+    cloud_cover: "%",
+  },
+  uk: {
+    temperature: "°C",
+    precipitation: "мм/год",
+    wind_speed: "миль/год",
+    visibility: "миль",
+    humidity: "%",
+    uv_index: "",
+    cloud_cover: "%",
+  },
+  ca: {
+    temperature: "°C",
+    precipitation: "мм/год",
+    wind_speed: "км/год",
+    visibility: "км",
+    humidity: "%",
+    uv_index: "",
+    cloud_cover: "%",
+  },
+};

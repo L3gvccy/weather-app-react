@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import WeatherContext from "../context/weather.context";
+
 export default function DailyForecast(data) {
+  const { units } = useContext(WeatherContext);
   return (
     <>
       <div className="row flex-nowrap overflow-x-auto overflow-y-hidden scroll-dark-thin">
@@ -19,16 +23,19 @@ export default function DailyForecast(data) {
               />
 
               <p className="mb-2">
-                {Math.round(day.temperature_min)}°C –{" "}
-                {Math.round(day.temperature_max)}°C
+                {Math.round(day.temperature_min)}
+                {units.temperature} – {Math.round(day.temperature_max)}
+                {units.temperature}
               </p>
 
               <p className="mb-0">
-                {Math.round(day.precipitation.total)} мм/год{" "}
+                {Math.round(day.precipitation.total)} {units.precipitation}{" "}
                 <i className="bi bi-droplet"></i>
               </p>
               <div className="mb-0">
-                <span>{Math.round(day.wind.speed)} км/год </span>
+                <span>
+                  {Math.round(day.wind.speed)} {units.wind_speed}{" "}
+                </span>
                 <div
                   style={{
                     transform: `rotate(${day.wind.angle}deg)`,

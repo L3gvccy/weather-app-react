@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import WeatherContext from "../context/weather.context";
+
 export default function HourlyForecast(data) {
+  const { units } = useContext(WeatherContext);
   return (
     <>
       <div className="row flex-nowrap overflow-x-auto overflow-y-hidden scroll-dark-thin">
@@ -23,13 +27,17 @@ export default function HourlyForecast(data) {
                 src={`/dist/weather_icons/set03/big/${hour.icon}.png`}
                 alt={hour.summary}
               />
-              <p className="mb-2 fw-bold">{Math.round(hour.temperature)} °C</p>
+              <p className="mb-2 fw-bold">
+                {Math.round(hour.temperature)} {units.temperature}
+              </p>
               <p className="mb-0">
-                {Math.round(hour.precipitation.total)} мм/год{" "}
+                {Math.round(hour.precipitation.total)} {units.precipitation}{" "}
                 <i className="bi bi-droplet"></i>
               </p>
               <div className="mb-0">
-                <span>{Math.round(hour.wind.speed)} км/год </span>
+                <span>
+                  {Math.round(hour.wind.speed)} {units.wind_speed}{" "}
+                </span>
                 <div
                   style={{
                     transform: `rotate(${hour.wind.angle}deg)`,
