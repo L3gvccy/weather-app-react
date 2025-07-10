@@ -10,6 +10,7 @@ function WeatherProvider({ children }) {
   const [currentWeather, setCurrentWeather] = useState({});
   const [hourlyForecast, setHourlyForecast] = useState([]);
   const [dailyForecast, setDailyForecast] = useState([]);
+  const [measurementSystem, setMeasurementSystem] = useState("auto");
 
   useEffect(() => {
     async function _getWatherData() {
@@ -32,7 +33,15 @@ function WeatherProvider({ children }) {
 
   return (
     <WeatherContext.Provider
-      value={{ place, loading, currentWeather, hourlyForecast, dailyForecast }}
+      value={{
+        place,
+        loading,
+        currentWeather,
+        hourlyForecast,
+        dailyForecast,
+        measurementSystem,
+        setMeasurementSystem,
+      }}
     >
       {children}
     </WeatherContext.Provider>

@@ -34,3 +34,22 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.settings-btn:hover {
+  cursor: pointer;
+}
+
+.settings-menu {
+  transition: all 0.3s ease-in-out;
+  display: none;
+  min-width: 200px;
+  top: 120%;
+  right: 0;
+  z-index: 1000;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+.settings-menu.open {
+  display: block;
+}
