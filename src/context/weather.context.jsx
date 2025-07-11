@@ -56,6 +56,7 @@ function WeatherProvider({ children }) {
         measurementSystem,
         setMeasurementSystem,
         units,
+        setPlace,
       }}
     >
       {children}
